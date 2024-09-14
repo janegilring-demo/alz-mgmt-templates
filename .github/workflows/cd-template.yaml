@@ -226,13 +226,13 @@ jobs:
           firstRunWhatIf: 'true'
           firstDeployment: '${{ env.firstDeployment }}'
           whatIfEnabled: 'true'
-      - name: 'What If: Hub (Hub-and-Spoke) Deployment'
+      - name: 'What If: Hub (VWAN) Deployment'
         uses: janegilring-demo/alz-mgmt-templates/.github/actions/bicep-deploy@main
         if: ${{ inputs.hub_and_spoke && !inputs.destroy }}
         with:
-          displayName: 'Hub (Hub-and-Spoke) Deployment'
-          templateFilePath: './infra-as-code/bicep/modules/hubNetworking/hubNetworking.bicep'
-          templateParametersFilePath: './config/custom-parameters/hubNetworking.parameters.all.json'
+          displayName: 'Hub (VWAN) Deployment'
+          templateFilePath: './infra-as-code/bicep/modules/vwanConnectivity/vwanConnectivity.bicep'
+          templateParametersFilePath: './config/custom-parameters/vwanConnectivity.parameters.all.json'
           managementGroupId: ''
           subscriptionId: '${{ env.CONNECTIVITY_SUBSCRIPTION_ID }}'
           resourceGroupName: '${{ env.CONNECTIVITY_RESOURCE_GROUP }}'
@@ -418,13 +418,13 @@ jobs:
           deploymentType: 'subscription'
           firstRunWhatIf: 'true'
           whatIfEnabled: 'false'
-      - name: 'Deploy: Hub (Hub-and-Spoke) Deployment'
+      - name: 'Deploy: Hub (VWAN) Deployment'
         uses: janegilring-demo/alz-mgmt-templates/.github/actions/bicep-deploy@main
         if: ${{ inputs.hub_and_spoke && !inputs.destroy }}
         with:
-          displayName: 'Hub (Hub-and-Spoke) Deployment'
-          templateFilePath: './infra-as-code/bicep/modules/hubNetworking/hubNetworking.bicep'
-          templateParametersFilePath: './config/custom-parameters/hubNetworking.parameters.all.json'
+          displayName: 'Hub (VWAN) Deployment'
+          templateFilePath: './infra-as-code/bicep/modules/vwanConnectivity/vwanConnectivity.bicep'
+          templateParametersFilePath: './config/custom-parameters/vwanConnectivity.parameters.all.json'
           managementGroupId: ''
           subscriptionId: '${{ env.CONNECTIVITY_SUBSCRIPTION_ID }}'
           resourceGroupName: '${{ env.CONNECTIVITY_RESOURCE_GROUP }}'
